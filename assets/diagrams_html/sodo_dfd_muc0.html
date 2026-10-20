@@ -1,0 +1,48 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff; margin: 0; padding: 30px; display: flex; justify-content: center; }
+.container { width: 920px; }
+.title { text-align: center; font-size: 22px; font-weight: bold; color: #1e3a8a; margin-bottom: 35px; text-transform: uppercase; }
+.diagram { display: flex; align-items: center; justify-content: space-between; position: relative; }
+.entity { width: 180px; border: 2px solid #1e3a8a; border-radius: 10px; background: #eff6ff; padding: 18px 12px; text-align: center; }
+.entity h3 { margin: 0 0 6px; font-size: 16px; color: #1e3a8a; }
+.entity p { margin: 0; font-size: 12px; color: #64748b; }
+.center-proc { width: 260px; height: 160px; border: 2.5px solid #2563eb; border-radius: 50%; background: #dbeafe; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 15px; box-shadow: 0 4px 10px rgba(37,99,235,0.15); }
+.center-proc h3 { margin: 0 0 4px; font-size: 17px; color: #1e3a8a; }
+.center-proc p { margin: 0; font-size: 12px; color: #1e40af; }
+.flows { display: flex; flex-direction: column; gap: 14px; width: 190px; }
+.flow-line { background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 6px 8px; font-size: 11.5px; color: #334155; font-weight: 500; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.flow-in { border-left: 3px solid #2563eb; }
+.flow-out { border-right: 3px solid #10b981; }
+</style></head><body><div class="container">
+<div class="title">Sơ Đồ Luồng Dữ Liệu DFD Mức 0 (Biểu Đồ Ngữ Cảnh)</div>
+<div class="diagram">
+  <div class="entity">
+    <h3>ADMIN</h3>
+    <p>Chủ nhà trọ / Quản lý</p>
+  </div>
+  <div class="flows">
+    <div class="flow-line flow-in">Thông tin phòng, dịch vụ →</div>
+    <div class="flow-line flow-in">Chỉ số điện nước, phí khác →</div>
+    <div class="flow-line flow-in">Ghi nhận thanh toán →</div>
+    <div class="flow-line flow-out">← Hóa đơn, thống kê, doanh thu</div>
+    <div class="flow-line flow-out">← Yêu cầu sự cố cần xử lý</div>
+  </div>
+  <div class="center-proc">
+    <h3>0. HỆ THỐNG</h3>
+    <h3>QUẢN LÝ PHÒNG TRỌ</h3>
+    <p>(Hệ thống trung tâm)</p>
+  </div>
+  <div class="flows">
+    <div class="flow-line flow-in">← Thông tin cá nhân, đăng nhập</div>
+    <div class="flow-line flow-in">← Yêu cầu báo sự cố sửa chữa</div>
+    <div class="flow-line flow-out">Thông báo hóa đơn tiền phòng →</div>
+    <div class="flow-line flow-out">Tra cứu chỉ số điện nước →</div>
+    <div class="flow-line flow-out">Trạng thái xử lý sự cố →</div>
+  </div>
+  <div class="entity">
+    <h3>KHÁCH THUÊ</h3>
+    <p>Người thuê phòng trọ</p>
+  </div>
+</div>
+</div></body></html>

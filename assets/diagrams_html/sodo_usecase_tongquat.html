@@ -1,0 +1,63 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff; margin: 0; padding: 25px; display: flex; justify-content: center; }
+.container { width: 950px; }
+.title { text-align: center; font-size: 22px; font-weight: bold; color: #1e3a8a; margin-bottom: 25px; text-transform: uppercase; }
+.layout { display: flex; justify-content: space-between; align-items: stretch; position: relative; }
+.actor-col { width: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.actor-box { background: #eff6ff; border: 2px solid #2563eb; border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; font-size: 30px; margin-bottom: 10px; }
+.actor-name { font-weight: bold; color: #1e3a8a; font-size: 15px; text-align: center; }
+.system-boundary { flex: 1; border: 2px dashed #3b82f6; border-radius: 16px; padding: 20px; margin: 0 20px; background: #f8fafc; }
+.system-title { text-align: center; font-size: 14px; font-weight: bold; color: #475569; margin-bottom: 15px; letter-spacing: 1px; }
+.uc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.uc-oval { background: #fff; border: 1.5px solid #2563eb; border-radius: 25px; padding: 8px 12px; text-align: center; font-size: 12.5px; font-weight: 600; color: #1e293b; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.uc-shared { border-color: #10b981; background: #ecfdf5; color: #065f46; }
+.uc-user { border-color: #8b5cf6; background: #f5f3ff; color: #5b21b6; }
+.legend { display: flex; justify-content: center; gap: 20px; margin-top: 20px; font-size: 12px; }
+.leg-item { display: flex; align-items: center; gap: 6px; }
+.leg-dot { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid; }
+</style></head><body><div class="container">
+<div class="title">Sơ Đồ Use Case Tổng Quát Hệ Thống</div>
+<div class="layout">
+  <div class="actor-col">
+    <div class="actor-box">👨‍💼</div>
+    <div class="actor-name">ADMIN<br>(Chủ Trọ)</div>
+    <div style="font-size:11px;color:#64748b;margin-top:6px;text-align:center">Toàn quyền quản trị</div>
+  </div>
+  <div class="system-boundary">
+    <div class="system-title">HỆ THỐNG QUẢN LÝ PHÒNG TRỌ</div>
+    <div class="uc-grid">
+      <div class="uc-oval uc-shared">UC01: Đăng nhập / Đăng xuất</div>
+      <div class="uc-oval uc-shared">UC02: Đổi mật khẩu cá nhân</div>
+      <div class="uc-oval">UC03: Xem Dashboard tổng quan</div>
+      <div class="uc-oval uc-user">UC04: Xem Dashboard cá nhân</div>
+      <div class="uc-oval">UC05: Quản lý phòng trọ (CRUD)</div>
+      <div class="uc-oval uc-user">UC06: Xem thông tin phòng thuê</div>
+      <div class="uc-oval">UC07: Quản lý người thuê (CRUD)</div>
+      <div class="uc-oval uc-user">UC08: Xem thông tin hợp đồng</div>
+      <div class="uc-oval">UC09: Quản lý hợp đồng & thời hạn</div>
+      <div class="uc-oval uc-user">UC10: Xem tiền điện nước hàng tháng</div>
+      <div class="uc-oval">UC11: Quản lý & tính điện nước</div>
+      <div class="uc-oval uc-user">UC12: Xem hóa đơn & hạn đóng</div>
+      <div class="uc-oval">UC13: Quản lý & in hóa đơn</div>
+      <div class="uc-oval uc-user">UC14: Xem lịch sử thanh toán</div>
+      <div class="uc-oval">UC15: Quản lý & ghi thanh toán</div>
+      <div class="uc-oval uc-shared">UC16: Gửi & xử lý yêu cầu sự cố</div>
+      <div class="uc-oval">UC17: Quản lý danh mục dịch vụ</div>
+      <div class="uc-oval">UC18: Báo cáo thống kê doanh thu</div>
+      <div class="uc-oval">UC19: Quản lý tài khoản & phân quyền</div>
+      <div class="uc-oval uc-user">UC20: Cập nhật thông tin cá nhân</div>
+    </div>
+  </div>
+  <div class="actor-col">
+    <div class="actor-box">🧑‍🎓</div>
+    <div class="actor-name">KHÁCH THUÊ<br>(Người Thuê)</div>
+    <div style="font-size:11px;color:#64748b;margin-top:6px;text-align:center">Portal cá nhân</div>
+  </div>
+</div>
+<div class="legend">
+  <div class="leg-item"><div class="leg-dot" style="border-color:#2563eb;background:#fff"></div> Use Case dành cho Admin</div>
+  <div class="leg-item"><div class="leg-dot" style="border-color:#8b5cf6;background:#f5f3ff"></div> Use Case dành cho Khách Thuê</div>
+  <div class="leg-item"><div class="leg-dot" style="border-color:#10b981;background:#ecfdf5"></div> Use Case dùng chung (Chung hai tác nhân)</div>
+</div>
+</div></body></html>

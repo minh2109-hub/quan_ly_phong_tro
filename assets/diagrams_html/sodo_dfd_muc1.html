@@ -1,0 +1,76 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff; margin: 0; padding: 25px; display: flex; justify-content: center; }
+.container { width: 950px; }
+.title { text-align: center; font-size: 22px; font-weight: bold; color: #1e3a8a; margin-bottom: 25px; text-transform: uppercase; }
+.grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.proc { border: 2px solid #2563eb; border-radius: 12px; background: #eff6ff; padding: 15px; position: relative; }
+.proc-num { background: #2563eb; color: #fff; border-radius: 50%; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold; margin-right: 6px; }
+.proc h4 { margin: 0 0 10px; font-size: 15px; color: #1e3a8a; display: flex; align-items: center; }
+.proc ul { margin: 0; padding-left: 20px; font-size: 12px; color: #334155; line-height: 1.6; }
+.dstore { border: 1.5px solid #059669; border-left: 5px solid #059669; border-radius: 6px; background: #ecfdf5; padding: 10px 12px; margin-top: 15px; font-size: 12px; color: #065f46; font-weight: 600; }
+</style></head><body><div class="container">
+<div class="title">Sơ Đồ Luồng Dữ Liệu DFD Mức 1 (Phân Rã 5 Phân Hệ Chính)</div>
+<div class="grid">
+  <div class="proc">
+    <h4><span class="proc-num">1.0</span> Quản Lý Xác Thực</h4>
+    <ul>
+      <li>Tiếp nhận username & password</li>
+      <li>Mã hóa kiểm tra bcrypt</li>
+      <li>Tạo Session & phân quyền truy cập</li>
+      <li>Quản lý mở/khóa tài khoản</li>
+    </ul>
+    <div class="dstore">D1: Bảng users (Tài khoản)</div>
+  </div>
+  <div class="proc">
+    <h4><span class="proc-num">2.0</span> Quản Lý Phòng & Khách</h4>
+    <ul>
+      <li>Thêm, sửa, xóa phòng trọ</li>
+      <li>Quản lý hồ sơ người thuê</li>
+      <li>Tạo và theo dõi hợp đồng</li>
+      <li>Cảnh báo hợp đồng sắp hết hạn</li>
+    </ul>
+    <div class="dstore">D2: Bảng rooms, tenants, contracts</div>
+  </div>
+  <div class="proc">
+    <h4><span class="proc-num">3.0</span> Quản Lý Điện Nước & DV</h4>
+    <ul>
+      <li>Nhập chỉ số điện, nước theo tháng</li>
+      <li>Tự động tính chênh lệch & tiền</li>
+      <li>Quản lý bảng giá dịch vụ</li>
+      <li>Ghi nhận sử dụng dịch vụ</li>
+    </ul>
+    <div class="dstore">D3: Bảng electric_water, services</div>
+  </div>
+  <div class="proc">
+    <h4><span class="proc-num">4.0</span> Quản Lý Hóa Đơn & Thu</h4>
+    <ul>
+      <li>Tổng hợp tiền phòng, điện, nước, DV</li>
+      <li>Lập hóa đơn & in phiếu thu</li>
+      <li>Ghi nhận thanh toán đa phương thức</li>
+      <li>Tự động đổi trạng thái Đã Thanh Toán</li>
+    </ul>
+    <div class="dstore">D4: Bảng invoices, payments</div>
+  </div>
+  <div class="proc">
+    <h4><span class="proc-num">5.0</span> Quản Lý Báo Sự Cố</h4>
+    <ul>
+      <li>Khách thuê gửi yêu cầu sự cố</li>
+      <li>Admin tiếp nhận và xử lý</li>
+      <li>Cập nhật tiến độ & hoàn thành</li>
+      <li>Khách theo dõi kết quả</li>
+    </ul>
+    <div class="dstore">D5: Bảng maintenance_requests</div>
+  </div>
+  <div class="proc">
+    <h4><span class="proc-num">6.0</span> Báo Cáo & Thống Kê</h4>
+    <ul>
+      <li>Thống kê tỷ lệ lấp đầy phòng</li>
+      <li>Biểu đồ doanh thu 12 tháng</li>
+      <li>Biểu đồ chi phí điện nước</li>
+      <li>Theo dõi nợ và hóa đơn quá hạn</li>
+    </ul>
+    <div class="dstore">D6: Tổng hợp dữ liệu đa bảng</div>
+  </div>
+</div>
+</div></body></html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff; margin: 0; padding: 30px; display: flex; justify-content: center; }
+.container { width: 900px; }
+.title { text-align: center; font-size: 22px; font-weight: bold; color: #1e3a8a; margin-bottom: 25px; text-transform: uppercase; }
+.layer { border: 2px solid #2563eb; border-radius: 12px; padding: 18px 25px; margin-bottom: 20px; background: #f8fafc; position: relative; }
+.layer-title { font-size: 16px; font-weight: bold; color: #1d4ed8; margin-bottom: 12px; display: flex; align-items: center; }
+.layer-badge { background: #2563eb; color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-right: 10px; }
+.boxes { display: flex; gap: 15px; justify-content: space-around; }
+.box { flex: 1; background: #fff; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 12px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.box h4 { margin: 0 0 6px; font-size: 14px; color: #0f172a; }
+.box p { margin: 0; font-size: 12px; color: #64748b; line-height: 1.4; }
+.arrow { text-align: center; font-size: 24px; color: #2563eb; margin: -10px 0 10px; font-weight: bold; }
+</style></head><body><div class="container">
+<div class="title">Sơ Đồ Kiến Trúc Hệ Thống Quản Lý Phòng Trọ</div>
+<div class="layer">
+  <div class="layer-title"><span class="layer-badge">TẦNG 1</span> PRESENTATION LAYER (TẦNG GIAO DIỆN CLIENT)</div>
+  <div class="boxes">
+    <div class="box"><h4>Trình Duyệt Web</h4><p>Chrome, Edge, Firefox, Safari<br>Responsive Desktop & Mobile</p></div>
+    <div class="box"><h4>Frontend Framework</h4><p>HTML5, CSS3, JavaScript ES6<br>Bootstrap 5.3, Font Awesome 6</p></div>
+    <div class="box"><h4>Thư Viện Trực Quan</h4><p>Chart.js 4.4 (Biểu đồ)<br>jQuery 3.7 (DOM & Event)</p></div>
+  </div>
+</div>
+<div class="arrow">↓ ↑ &nbsp; HTTP / HTTPS &nbsp; (JSON & Form Request)</div>
+<div class="layer">
+  <div class="layer-title"><span class="layer-badge">TẦNG 2</span> APPLICATION LAYER (TẦNG MÁY CHỦ ỨNG DỤNG)</div>
+  <div class="boxes">
+    <div class="box"><h4>Web Server</h4><p>Apache 2.4 (XAMPP)<br>Routing & Virtual Host</p></div>
+    <div class="box"><h4>Xác Thực & Phân Quyền</h4><p>Session Management<br>Bcrypt Password Hash<br>RBAC (Admin / Khách)</p></div>
+    <div class="box"><h4>Business Logic (PHP 8)</h4><p>CRUD Phòng, Khách, Hợp đồng<br>Tính điện nước & Lập hóa đơn<br>Xử lý sự cố & Báo cáo</p></div>
+    <div class="box"><h4>Database Access</h4><p>PDO (PHP Data Objects)<br>Prepared Statements<br>SQL Injection Prevention</p></div>
+  </div>
+</div>
+<div class="arrow">↓ ↑ &nbsp; MySQL Native Protocol (Port 3306)</div>
+<div class="layer">
+  <div class="layer-title"><span class="layer-badge">TẦNG 3</span> DATABASE LAYER (TẦNG CƠ SỞ DỮ LIỆU)</div>
+  <div class="boxes">
+    <div class="box"><h4>Hệ Quản Trị MySQL 8.0</h4><p>Database: quan_ly_phong_tro<br>Storage Engine: InnoDB<br>Charset: utf8mb4_unicode_ci</p></div>
+    <div class="box"><h4>Các Bảng Thực Thể</h4><p>users, rooms, tenants<br>contracts, services<br>maintenance_requests</p></div>
+    <div class="box"><h4>Các Bảng Nghiệp Vụ</h4><p>electric_water, service_usage<br>invoices, payments<br>Ràng buộc Foreign Keys & Index</p></div>
+  </div>
+</div>
+</div></body></html>

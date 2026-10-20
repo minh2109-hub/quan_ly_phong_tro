@@ -1,0 +1,89 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff; margin: 0; padding: 20px; display: flex; justify-content: center; }
+.container { width: 1000px; }
+.title { text-align: center; font-size: 22px; font-weight: bold; color: #1e3a8a; margin-bottom: 20px; text-transform: uppercase; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.table-card { border: 1.5px solid #3b82f6; border-radius: 8px; background: #fff; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.06); font-size: 11px; }
+.th-header { background: #1e3a8a; color: #fff; padding: 6px 8px; font-weight: bold; font-size: 12px; display: flex; justify-content: space-between; }
+.col-list { padding: 6px 8px; line-height: 1.5; color: #334155; }
+.pk { color: #dc2626; font-weight: bold; }
+.fk { color: #2563eb; font-weight: bold; }
+.rel-bar { margin-top: 15px; padding: 10px 14px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; font-size: 12px; color: #1e40af; }
+</style></head><body><div class="container">
+<div class="title">Sơ Đồ Thực Thể Liên Kết (ERD) - 10 Bảng Cơ Sở Dữ Liệu</div>
+<div class="grid">
+  <div class="table-card">
+    <div class="th-header"><span>users</span><span>[Tài khoản]</span></div>
+    <div class="col-list">
+      <span class="pk">🔑 id (INT, PK)</span><br>
+      username (VARCHAR)<br>password (VARCHAR)<br>ho_ten (VARCHAR)<br>email (VARCHAR)<br>
+      vai_tro (ENUM)<br>trang_thai (ENUM)<br><span class="fk">🔗 tenant_id (INT, FK)</span>
+    </div>
+  </div>
+  <div class="table-card">
+    <div class="th-header"><span>rooms</span><span>[Phòng trọ]</span></div>
+    <div class="col-list">
+      <span class="pk">🔑 id (INT, PK)</span><br>
+      ma_phong (VARCHAR, UQ)<br>ten_phong (VARCHAR)<br>loai_phong (VARCHAR)<br>
+      tang, khu, dien_tich<br>gia_thue, tien_coc<br>so_nguoi_toi_da (INT)<br>trang_thai (ENUM)
+    </div>
+  </div>
+  <div class="table-card">
+    <div class="th-header"><span>tenants</span><span>[Người thuê]</span></div>
+    <div class="col-list">
+      <span class="pk">🔑 id (INT, PK)</span><br>
+      ho_ten, so_dien_thoai<br>ngay_sinh, gioi_tinh<br>email, so_cmnd, dia_chi<br>
+      <span class="fk">🔗 room_id (INT, FK)</span><br>ngay_bat_dau_thue<br>trang_thai (ENUM)
+    </div>
+  </div>
+  <div class="table-card">
+    <div class="th-header"><span>contracts</span><span>[Hợp đồng]</span></div>
+    <div class="col-list">
+      <span class="pk">🔑 id (INT, PK)</span><br>
+      ma_hop_dong (VARCHAR, UQ)<br><span class="fk">🔗 room_id (INT, FK)</span><br>
+      <span class="fk">🔗 tenant_id (INT, FK)</span><br>ngay_bat_dau, ngay_ket_thuc<br>
+      gia_thue, tien_coc<br>chu_ky_thanh_toan<br>trang_thai (ENUM)
+    </div>
+  </div>
+  <div class="table-card">
+    <div class="th-header"><span>electric_water</span><span>[Điện nước]</span></div>
+    <div class="col-list">
+      <span class="pk">🔑 id (INT, PK)</span><br>
+      <span class="fk">🔗 room_id (INT, FK)</span><br>thang, nam (INT)<br>
+      chi_so_dien_cu, moi<br>don_gia_dien<br>chi_so_nuoc_cu, moi<br>don_gia_nuoc
+    </div>
+  </div>
+  <div class="table-card">
+    <div class="th-header"><span>services</span><span>[Dịch vụ]</span></div>
+    <div class="col-list">
+      <span class="pk">🔑 id (INT, PK)</span><br>
+      ma_dich_vu (VARCHAR)<br>ten_dich_vu (VARCHAR)<br>don_gia (DECIMAL)<br>
+      don_vi_tinh (VARCHAR)<br>mo_ta, trang_thai
+    </div>
+  </div>
+  <div class="table-card">
+    <div class="th-header"><span>invoices</span><span>[Hóa đơn]</span></div>
+    <div class="col-list">
+      <span class="pk">🔑 id (INT, PK)</span><br>
+      ma_hoa_don (VARCHAR, UQ)<br><span class="fk">🔗 room_id (INT, FK)</span><br>
+      <span class="fk">🔗 tenant_id (INT, FK)</span><br>thang, nam, tien_phong<br>
+      tien_dien, tien_nuoc<br>tien_dich_vu, phi_khac<br>
+      <b>tong_tien</b>, han_thanh_toan<br>trang_thai (ENUM)
+    </div>
+  </div>
+  <div class="table-card">
+    <div class="th-header"><span>payments</span><span>[Thanh toán]</span></div>
+    <div class="col-list">
+      <span class="pk">🔑 id (INT, PK)</span><br>
+      ma_thanh_toan (VARCHAR)<br><span class="fk">🔗 invoice_id (INT, FK)</span><br>
+      <span class="fk">🔗 tenant_id (INT, FK)</span><br>so_tien (DECIMAL)<br>
+      phuong_thuc, ngay_tt
+    </div>
+  </div>
+</div>
+<div class="rel-bar">
+  <b>Quan hệ chính:</b> rooms (1) ── (N) tenants | rooms (1) ── (N) contracts | rooms (1) ── (N) electric_water | 
+  tenants (1) ── (N) invoices (1) ── (N) payments | rooms (1) ── (N) maintenance_requests | users (1) ── (1) tenants
+</div>
+</div></body></html>

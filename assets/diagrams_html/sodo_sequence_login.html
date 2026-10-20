@@ -1,0 +1,58 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff; margin: 0; padding: 25px; display: flex; justify-content: center; }
+.container { width: 900px; }
+.title { text-align: center; font-size: 22px; font-weight: bold; color: #1e3a8a; margin-bottom: 25px; text-transform: uppercase; }
+.seq-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.seq-table th { background: #1e3a8a; color: #fff; padding: 10px; border: 1px solid #1e3a8a; }
+.seq-table td { padding: 10px 12px; border: 1px solid #e2e8f0; vertical-align: top; }
+.seq-table tr:nth-child(even) { background: #f8fafc; }
+.step-num { font-weight: bold; color: #2563eb; }
+</style></head><body><div class="container">
+<div class="title">Sơ Đồ Tuần Tự (Sequence) - Chức Năng Đăng Nhập & Phân Quyền</div>
+<table class="seq-table">
+  <tr><th>Bước</th><th>Người Dùng (Client)</th><th>Trang Xử Lý (login.php)</th><th>Cơ Sở Dữ Liệu (MySQL)</th><th>Kết Quả / Chuyển Hướng</th></tr>
+  <tr>
+    <td class="step-num">1</td>
+    <td>Nhập username, password và submit form</td>
+    <td>Tiếp nhận POST request, validate dữ liệu đầu vào</td>
+    <td>-</td>
+    <td>Kiểm tra không để trống</td>
+  </tr>
+  <tr>
+    <td class="step-num">2</td>
+    <td>-</td>
+    <td>Thực hiện Prepared Statement query</td>
+    <td>SELECT * FROM users WHERE username = ?</td>
+    <td>Trả về bản ghi user (nếu có)</td>
+  </tr>
+  <tr>
+    <td class="step-num">3</td>
+    <td>-</td>
+    <td>Gọi password_verify(password, hash)</td>
+    <td>-</td>
+    <td>Khớp mật khẩu bcrypt</td>
+  </tr>
+  <tr>
+    <td class="step-num">4 (Lỗi)</td>
+    <td>Nhận thông báo lỗi màu đỏ</td>
+    <td>Set thông báo lỗi: "Tên đăng nhập hoặc mật khẩu không đúng"</td>
+    <td>-</td>
+    <td>Giữ nguyên trang login.php</td>
+  </tr>
+  <tr>
+    <td class="step-num">5 (Đúng)</td>
+    <td>-</td>
+    <td>Khởi tạo $_SESSION (user_id, role, ho_ten, tenant_id)</td>
+    <td>UPDATE users SET lan_cuoi_dang_nhap = NOW()</td>
+    <td>Ghi nhận phiên đăng nhập</td>
+  </tr>
+  <tr>
+    <td class="step-num">6</td>
+    <td>Được chuyển hướng đến trang tương ứng</td>
+    <td>Kiểm tra vai_tro:<br>• Admin → /admin/dashboard.php<br>• Khách thuê → /user/dashboard.php</td>
+    <td>-</td>
+    <td>Tải giao diện làm việc theo vai trò</td>
+  </tr>
+</table>
+</div></body></html>

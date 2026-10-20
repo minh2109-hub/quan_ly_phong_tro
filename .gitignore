@@ -1,0 +1,29 @@
+# Composer / Vendor
+/vendor/
+
+# Environment files
+.env
+.env.local
+
+# IDE / Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs
+*.log
+
+# Uploads directory (keep .gitkeep)
+/uploads/*
+!/uploads/.gitkeep
